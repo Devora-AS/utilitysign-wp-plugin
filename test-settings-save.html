@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Settings Save Fix</title>
+</head>
+<body>
+    <h1>Settings Save Fix Test</h1>
+    <div id="result"></div>
+    
+    <script>
+        // Test the mergeConfig function
+        const mergeConfig = (prev, update) => {
+            if (!prev) {
+                return update;
+            }
+
+            const merged = { ...prev };
+
+            const deepMerge = (target, source) => {
+                if (!source) {
+                    return;
+                }
+
+                Object.keys(source).forEach(key => {
+                    const value = source[key];
+
+                    if (value === null || value === undefined) {
+                        return;
+                    }
+
+                    // Always replace instead of merge when source value is non-object
+                    if (typeof value !== 'object' || Array.isArray(value)) {
+                        target[key] = value;
+                        return;
+                    }
+
+                    // For objects, check if target is also an object before deep merge
+                    if (typeof target[key] !== 'object' || target[key] === null || Array.isArray(target[key])) {
+                        target[key] = value;
+                    } else {
+                        deepMerge(target[key], value);
+                    }
+                });
+            };
+
+            deepMerge(merged, update);
+            return merged;
+        };
+
+        // Test case that was causing the error
+        const prevConfig = {
+            clientSecret: 'a79520b739e77a6d43784d89027239260bc0c4df0326dda20b4dec2456b61b0d',
+            criipto: {
+                domain: 'old-domain',
+                clientSecret: 'encrypted-secret-string'
+            }
+        };
+
+        const newConfig = {
+            criipto: {
+                domain: 'devora-test.criipto.id'
+            }
+        };
+
+        try {
+            const result = mergeConfig(prevConfig, newConfig);
+            document.getElementById('result').innerHTML = `
+                <h2 style="color: green;">✅ SUCCESS - No Error!</h2>
+                <p>The merge completed without throwing an error.</p>
+                <h3>Result:</h3>
+                <pre>${JSON.stringify(result, null, 2)}</pre>
+            `;
+        } catch (error) {
+            document.getElementById('result').innerHTML = `
+                <h2 style="color: red;">❌ ERROR</h2>
+                <p>${error.message}</p>
+                <pre>${error.stack}</pre>
+            `;
+        }
+    </script>
+</body>
+</html>
+

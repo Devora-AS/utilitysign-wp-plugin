@@ -1,0 +1,47 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace this with your own styles or remove the file completely.
+ */
+
+.wp-block-utilitysign-signing-form {
+    border: 2px dashed #3432A6;
+    padding: 20px;
+    max-width: 100%;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.wp-block-utilitysign-signing-form.utilitysign-signing-form-editor {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.utilitysign-signing-form-preview {
+    width: 100%;
+    max-width: 600px;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-header h3 {
+    color: #3432A6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-details {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-warning {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-warning p {
+    color: #721c24;
+}

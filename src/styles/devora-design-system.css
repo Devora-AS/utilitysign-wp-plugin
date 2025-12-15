@@ -1,0 +1,232 @@
+/* Devora Design System CSS Variables and Utility Classes */
+
+/* Google Fonts - Loaded with font-display: swap for better performance */
+/* Note: Fonts are loaded via preconnect in PerformanceOptimizer for better performance */
+
+/* CSS Variables for Devora Design System */
+:root {
+  /* Devora Brand Colors */
+  --devora-primary: #3432A6;
+  --devora-primary-dark: #242A56;
+  --devora-primary-light: #7A6A95;
+  --devora-accent: #FFFADE;
+  --devora-background: #FFFFFF;
+  --devora-background-light: #FCF7FF;
+  --devora-background-dark: #242A56;
+  --devora-text-primary: #242A56;
+  --devora-text-secondary: #7A6A95;
+  --devora-text-light: #FFFFFF;
+  --devora-overlay: rgba(150, 138, 182, 0.2);
+  
+  /* Border Radius */
+  --devora-button-radius: 21.5px;
+  
+  /* Typography Scale */
+  --devora-heading-size: 32px;
+  --devora-heading-line-height: 38px;
+  --devora-body-size: 16px;
+  --devora-body-line-height: 22px;
+  --devora-ui-size: 15px;
+}
+
+/* Devora Utility Classes */
+.devora-button {
+  @apply inline-flex items-center justify-center rounded-devora-button text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+}
+
+.devora-button-primary {
+  @apply devora-button bg-devora-primary text-white hover:bg-devora-primary/90;
+}
+
+.devora-button-secondary {
+  @apply devora-button bg-devora-primary-light text-white hover:bg-devora-primary-light/90;
+}
+
+.devora-button-accent {
+  @apply devora-button bg-devora-accent text-devora-primary hover:bg-devora-accent/90;
+}
+
+.devora-button-ghost {
+  @apply devora-button hover:bg-devora-primary-light/10 hover:text-devora-primary;
+}
+
+.devora-card {
+  @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+}
+
+.devora-card-white {
+  @apply devora-card bg-devora-background;
+}
+
+.devora-card-dark {
+  @apply devora-card bg-devora-background-dark text-devora-text-light;
+}
+
+.devora-card-light {
+  @apply devora-card bg-devora-background-light;
+}
+
+.devora-input {
+  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* WCAG 2.1 AA compliant placeholder color - ensures 4.5:1 contrast ratio */
+.devora-input::placeholder,
+input.devora-input::placeholder,
+textarea.devora-input::placeholder {
+  color: #6B6B6B !important; /* 5.32:1 contrast ratio on white background */
+  opacity: 1;
+}
+
+/* Date input styling to match other inputs exactly */
+.devora-input[type="date"],
+input[type="date"].devora-input {
+  /* Use exact same base styles as .devora-input */
+  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  
+  /* Override browser default date picker styling with !important to force override */
+  -webkit-appearance: none !important;
+  -moz-appearance: textfield !important;
+  appearance: none !important;
+  
+  /* Ensure consistent appearance across browsers */
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  
+  /* Use CSS variable for border-radius to match component settings - force with !important */
+  border-radius: var(--devora-input-radius, 0.375rem) !important;
+  
+  /* Remove browser-specific date picker icons/buttons */
+  position: relative;
+  
+  /* Ensure same background and border as other inputs - force with !important */
+  background-color: hsl(var(--background)) !important;
+  border-color: hsl(var(--input)) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  
+  /* Ensure same padding as other inputs */
+  padding: 0.5rem 0.75rem !important;
+  
+  /* Remove any box-shadow that browsers might add */
+  box-shadow: none !important;
+  
+  /* Ensure same height as other inputs */
+  height: 2.5rem !important;
+  min-height: 2.5rem !important;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) - Calendar picker icon */
+.devora-input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"].devora-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  /* Position calendar icon consistently on the right */
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.devora-input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="date"].devora-input::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Firefox - Calendar picker icon */
+.devora-input[type="date"]::-moz-calendar-picker-indicator,
+input[type="date"].devora-input::-moz-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+}
+
+.devora-input[type="date"]::-moz-calendar-picker-indicator:hover,
+input[type="date"].devora-input::-moz-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+.devora-badge {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+.devora-badge-primary {
+  @apply devora-badge border-transparent bg-devora-primary text-devora-text-light;
+}
+
+.devora-badge-secondary {
+  @apply devora-badge border-transparent bg-devora-primary-light text-devora-text-light;
+}
+
+.devora-badge-accent {
+  @apply devora-badge border-transparent bg-devora-accent text-devora-primary;
+}
+
+.devora-section-dark {
+  @apply bg-devora-background-dark text-devora-text-light;
+}
+
+.devora-section-light {
+  @apply bg-devora-background-light;
+}
+
+.devora-section-white {
+  @apply bg-devora-background;
+}
+
+/* Typography Classes */
+.devora-heading {
+  @apply font-heading text-[32px] leading-[38px] font-black;
+}
+
+.devora-body {
+  @apply font-body text-base leading-[22px];
+}
+
+.devora-ui {
+  @apply font-ui font-bold text-[15px];
+}
+
+/* Devora Logo Styles */
+.devora-logo {
+  @apply font-heading font-black text-devora-primary;
+}
+
+.devora-logo-dark {
+  @apply font-heading font-black text-devora-text-light;
+}
+
+/* Devora Overlay */
+.devora-overlay {
+  background: var(--devora-overlay);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .devora-heading {
+    @apply text-2xl leading-8;
+  }
+  
+  .devora-body {
+    @apply text-sm leading-6;
+  }
+}

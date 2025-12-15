@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg 
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1386.7 947.9"
+  role="img"
+  aria-label="UtilitySign Icon"
+>
+  <metadata xmlns:d="https://utilitysign.no/">
+    UtilitySign admin menu icon for WordPress
+  </metadata>
+
+  <!-- CRITICAL: Use currentColor for WordPress admin color scheme compatibility -->
+  <g id="utilitysign-icon" fill="currentColor">
+    <path d="m586.73336,564.10883c-0.4783,-6.69615 -0.95659,-13.39229 -0.95659,-20.56673l0,-324.76307l-127.22677,0l0,262.58457l128.66166,82.74523z"/>
+    <path d="m843.57838,729.12099c8.13103,-6.21785 16.26207,-12.4357 23.43651,-19.61014c20.56673,-20.56673 35.87221,-44.48154 46.87302,-72.70101c11.00081,-28.21947 16.26207,-58.83042 16.26207,-92.78945l0,-325.24136l-127.22677,0l0,325.24136c0,19.13184 -2.39148,36.8288 -7.17444,51.65598c-4.78296,15.30548 -11.9574,28.21947 -21.52333,38.74199c-9.08763,10.52251 -20.56673,18.65355 -33.95902,24.3931l107.13833,68.87464z"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+{
+    "plugin_name":"UtilitySign",
+    "plugin_description":"WordPress plugin for document signing workflows with BankID integration",
+    "plugin_version":"1.0.0",
+    "plugin_file_name":"utilitysign.php",
+    "author_name":"Devora AS",
+    "author_uri":"https://devora.no",
+    "text_domain":"utilitysign",
+    "domain_path":"/languages",
+    "main_class_name":"UtilitySign",
+    "main_function_name":"utilitysign_init",
+    "namespace":"UtilitySign",
+    "plugin_prefix":"utilitysign",
+    "constant_prefix":"UTILITYSIGN"
+}

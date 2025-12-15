@@ -1,0 +1,240 @@
+# WordPress Plugin Deployment Ignore File
+# Files and directories to exclude from deployment to WordPress test site
+
+# Development files
+node_modules/
+.git/
+.gitignore
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build artifacts (exclude maps; keep built dist assets)
+*.map
+build/
+.next/
+out/
+
+# Ensure Vite build outputs are included
+!assets/admin/dist/**
+!assets/frontend/dist/**
+!assets/blocks/*/dist/**
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# WordPress specific
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# Plugin development files
+.deployignore
+deploy.sh
+*.md
+LICENSE
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+
+# Test files
+tests/
+__tests__/
+*.test.js
+*.test.ts
+*.test.tsx
+*.spec.js
+*.spec.ts
+*.spec.tsx
+
+# Local PHP helper/test files (explicit)
+test-complete.php
+test-debug.php
+test-plugin-mock-fixed.php
+test-plugin-mock.php
+test-shortcode-class.php
+test-shortcode-complete.php
+test-shortcode-final-fixed.php
+test-shortcode-final.php
+test-shortcode-functionality.php
+test-shortcode-rendering-fixed.php
+test-shortcode-rendering.php
+test-shortcode-with-json.php
+test-shortcode-with-user.php
+test-shortcode.php
+test-step-by-step.php
+test-with-action-trigger.php
+test-with-all-mocks.php
+test-wordpress-shortcode.php
+simple-test.php
+simple-test-with-mocks.php
+comprehensive-plugin-test.php
+wp-plugin/comprehensive-plugin-test.php
+wp-plugin/simple-plugin-test.php
+wp-plugin/test-plugin-functionality.php
+
+# Documentation
+docs/
+*.md
+
+# CI/CD files
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# TypeScript
+*.tsbuildinfo
+
+# ESLint
+.eslintrc*
+.eslintignore
+
+# Prettier
+.prettierrc*
+.prettierignore
+
+# Jest
+jest.config.*
+jest.setup.*
+
+# Webpack
+webpack.config.*
+
+# Vite cache
+.vite/
+
+# Prettier cache
+.prettiercache
+
+# Source files (NEVER deploy source code to production)
+src/
+
+# Build and development configuration files
+package.json
+composer.json
+composer.lock
+babel.config.js
+tailwind.config.js
+vite.*.config.js
+postcss.config.cjs
+tsconfig.json
+next.config.js
+gruntfile.cjs
+components.json
+
+# Editor and IDE specific files
+.babelrc
+.storybook/
+.cursor/
+
+# Test files and results
+test-results/
+test-*.html
+memory.json
+deploy-verify.php
+
+# PHP development and quality assurance files
+phpcs.xml.dist
+phpunit.xml
+plugin-config.json

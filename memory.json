@@ -1,0 +1,121 @@
+{
+  "project": "UtilitySign WordPress Plugin",
+  "review_date": "2025-01-24",
+  "issues": [
+    {
+      "id": 1,
+      "file": "includes/Shortcodes/SigningFormShortcode.php",
+      "summary": "Closing PHP tag causing 'headers already sent' errors",
+      "severity": "critical",
+      "explanation": "WordPress best practice: PHP files should never have closing ?> tags as they can cause whitespace to be output, resulting in 'Cannot modify header information - headers already sent' errors",
+      "proposed_fix": "Remove closing ?> tag from end of file",
+      "status": "fixed"
+    },
+    {
+      "id": 2,
+      "file": "root directory",
+      "summary": "19 duplicate test files cluttering root directory",
+      "severity": "high",
+      "explanation": "Multiple test files (test-*.php) are scattered in root directory instead of tests/ folder, causing clutter and confusion",
+      "proposed_fix": "Move test-simple.php to tests/manual/ and delete all other obsolete test files",
+      "status": "fixed"
+    },
+    {
+      "id": 3,
+      "file": "database schema",
+      "summary": "Missing 'event_type' column in wp_utilitysign_auth_log table",
+      "severity": "high",
+      "explanation": "SecuritySettings::get_security_stats() queries for event_type column that doesn't exist in auth_log table, causing database errors",
+      "proposed_fix": "Added event_type column to AuthLog migration and updated ApiAuthenticationService to insert event_type",
+      "status": "fixed"
+    },
+    {
+      "id": 4,
+      "file": "includes/Routes/Api.php and includes/Controllers/",
+      "summary": "Duplicate and unused boilerplate code (Accounts, Posts controllers)",
+      "severity": "high",
+      "explanation": "Old boilerplate controllers (Accounts, Posts) and their routes are not used in UtilitySign but still registered, causing confusion and potential conflicts. These are for email account management, not electricity signing.",
+      "proposed_fix": "Removed unused Controllers/Accounts/, Controllers/Posts/, Models/Accounts.php, database/Migrations/Accounts.php, database/Seeders/Accounts.php, and cleaned up Routes/Api.php",
+      "status": "fixed"
+    },
+    {
+      "id": 5,
+      "file": "includes/Controllers/Products/Actions.php vs includes/REST/ProductsController.php",
+      "summary": "Duplicate product API implementations",
+      "severity": "high",
+      "explanation": "Two different implementations for product endpoints: old boilerplate in Controllers/Products/Actions.php and new proper REST API in REST/ProductsController.php. This creates confusion and potential conflicts.",
+      "proposed_fix": "Removed old Controllers/Products/, Controllers/Accounts/, Controllers/Posts/, Models/Posts.php, Models/Users.php, Models/Accounts.php. Cleaned up Routes/Api.php to remove all boilerplate routes.",
+      "status": "fixed"
+    },
+    {
+      "id": 6,
+      "file": "utilitysign.php",
+      "summary": "Missing initialization of SupplierSelectionBlock and SupplierAnalyticsController",
+      "severity": "moderate",
+      "explanation": "SupplierSelectionBlock and SupplierAnalyticsController classes exist but were not being initialized in the main plugin file, meaning their functionality was not available.",
+      "proposed_fix": "Added initialization calls for both SupplierSelectionBlock and SupplierAnalyticsController in utilitysign.php",
+      "status": "fixed"
+    },
+    {
+      "id": 7,
+      "file": "includes/Core/SecurityService.php",
+      "summary": "Encryption key stored in wp_options (low priority)",
+      "severity": "low",
+      "explanation": "Encryption key is generated and stored in wp_options table. While functional, best practice is to store in wp-config.php constants or environment variables.",
+      "proposed_fix": "Consider moving to UTILITYSIGN_ENCRYPTION_KEY constant in wp-config.php for enhanced security",
+      "status": "documented"
+    },
+    {
+      "id": 8,
+      "file": "includes/REST/ProductsController.php",
+      "summary": "REST API public access is intentional (not a security issue)",
+      "severity": "info",
+      "explanation": "ProductsController uses __return_true for permission_callback to allow public access to product listings. This is intentional for e-commerce functionality where products should be publicly visible.",
+      "proposed_fix": "No fix needed - this is by design. Products are meant to be publicly accessible.",
+      "status": "validated"
+    },
+    {
+      "id": 9,
+      "file": "includes/Core/Install.php",
+      "summary": "References to deleted Accounts migration causing fatal error on plugin activation",
+      "severity": "critical",
+      "explanation": "Install.php was still trying to call Accounts::up() and SeedersAccounts::run() even though these classes were deleted as part of boilerplate cleanup. This caused fatal 'Class not found' errors when activating the plugin.",
+      "proposed_fix": "Removed use statements and method calls for Accounts migration and seeder. Updated insert_data() to reflect that UtilitySign creates data dynamically through admin interface.",
+      "status": "fixed"
+    },
+    {
+      "id": 10,
+      "file": "src/admin/routes.jsx",
+      "summary": "React admin router does not respect WordPress submenu slugs",
+      "severity": "high",
+      "explanation": "The WordPress admin menu loads pages such as admin.php?page=utilitysign-suppliers, but the SPA router always starts at '/' and navigates to the default dashboard. As a result every submenu renders the dashboard and the user cannot reach Suppliers, Orders, Products, or Settings views.",
+      "proposed_fix": "Expose the current submenu slug via localized script data, map slugs to SPA routes on bootstrap, and ensure each submenu has a dedicated React route/component. Update menu highlighting to rely on router state instead of the legacy hash script.",
+      "status": "fixed",
+      "priority": 1,
+      "category": "functionality",
+      "dependencies": [],
+      "test_requirements": [
+        "Open Dashboard, Suppliers, Orders, Products, Settings menu items and verify each renders unique React page",
+        "Confirm active menu styling follows current route"
+      ],
+      "estimated_effort": "1d"
+    },
+    {
+      "id": 11,
+      "file": "src/admin/pages",
+      "summary": "Missing Suppliers and Orders admin React pages",
+      "severity": "high",
+      "explanation": "The WordPress menu exposes Suppliers and Orders sections but there are no corresponding React components or routes. Even after routing is fixed, these sections would still show blank dashboards, failing the Phase 1C requirements for supplier and order management.",
+      "proposed_fix": "Implement Suppliers and Orders page components with the expected management UI (lists, analytics stubs, modals) and register routes so the admin menu links load meaningful content.",
+      "status": "fixed",
+      "priority": 1,
+      "category": "functionality",
+      "dependencies": [10],
+      "test_requirements": [
+        "Navigate to Suppliers menu and verify supplier management UI renders",
+        "Navigate to Orders menu and verify order management UI renders"
+      ],
+      "estimated_effort": "2d"
+    }
+  ]
+}

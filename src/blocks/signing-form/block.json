@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "utilitysign/signing-form",
+    "version": "1.0.0",
+    "title": "UtilitySign Signing Form",
+    "category": "widgets",
+    "icon": "signature",
+    "description": "Embeds the UtilitySign React signing form for document signing workflows with BankID integration.",
+    "attributes": {
+        "documentId": {
+            "type": "string",
+            "default": ""
+        },
+        "enableBankID": {
+            "type": "boolean",
+            "default": true
+        },
+        "enableEmailNotifications": {
+            "type": "boolean",
+            "default": true
+        },
+        "className": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": true,
+        "spacing": {
+            "padding": true,
+            "margin": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        }
+    },
+    "textdomain": "utilitysign",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "viewScript": "file:./view.js"
+}

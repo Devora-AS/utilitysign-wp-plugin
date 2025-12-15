@@ -1,0 +1,84 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace this with your own styles or remove the file completely.
+ */
+
+.wp-block-utilitysign-signing-form {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wp-block-utilitysign-signing-form.utilitysign-signing-form {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.utilitysign-signing-form-preview {
+    width: 100%;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-header h3 {
+    margin: 0;
+    color: #3432A6;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-header .utilitysign-signing-form-status .utilitysign-status-valid {
+    color: #28a745;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-header .utilitysign-signing-form-status .utilitysign-status-error {
+    color: #dc3545;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-details .utilitysign-detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 5px 0;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-details .utilitysign-detail-item strong {
+    color: #495057;
+    font-weight: 600;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-details .utilitysign-detail-item span {
+    color: #6c757d;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+.utilitysign-signing-form-preview .utilitysign-signing-form-warning p {
+    margin: 0;
+    color: #856404;
+    font-size: 14px;
+}

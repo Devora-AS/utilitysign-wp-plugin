@@ -1,0 +1,19 @@
+{
+  "name": "devora/utilitysign",
+  "description": "WordPress plugin for document signing workflows with BankID integration",
+  "autoload": {
+    "psr-4": {
+      "UtilitySign\\": "includes/",
+      "UtilitySign\\Libs\\": "libs/"
+    },
+    "files": [
+      "libs/assets.php",
+      "libs/db.php",
+      "includes/functions.php"
+    ]
+  },
+  "require": {
+    "prappo/wp-eloquent": "^3.0",
+    "yahnis-elsts/plugin-update-checker": "^5.0"
+  }
+}
