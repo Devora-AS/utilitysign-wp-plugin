@@ -1,7 +1,7 @@
 === UtilitySign ===
 Requires at least: 5.9
 Tested up to: 6.6
-Stable tag: 1.0.5-rc1
+Stable tag: 1.0.6-rc2
 Requires PHP: 7.2
 License: GPLv2 or later
 

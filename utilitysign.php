@@ -6,7 +6,7 @@
  * Author URI: https://devora.no
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Version: 1.0.5-rc1
+ * Version: 1.0.6-rc2
  * Requires at least: 5.0
  * Tested up to: 6.8
  * Requires PHP: 7.4
